@@ -21,7 +21,6 @@ import agersant.polaris.api.API;
 
 public class BrowseViewAlbum extends BrowseViewContent {
 
-	private final BrowseAdapter adapter;
 	private final ImageView artwork;
 	private final TextView artist;
 	private final TextView title;

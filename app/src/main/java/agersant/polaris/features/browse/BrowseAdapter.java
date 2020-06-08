@@ -11,6 +11,7 @@ abstract class BrowseAdapter
 		extends RecyclerView.Adapter<BrowseItemHolder> {
 
 	ArrayList<? extends CollectionItem> items;
+	BrowseItemHolder contextMenuActiveItem;
 
 	BrowseAdapter() {
 		super();
@@ -30,6 +31,14 @@ abstract class BrowseAdapter
 	@Override
 	public int getItemCount() {
 		return items.size();
+	}
+
+	public BrowseItemHolder getContextMenuActiveItem() {
+		return contextMenuActiveItem;
+	}
+
+	public void setContextMenuActiveItem(BrowseItemHolder item) {
+		contextMenuActiveItem = item;
 	}
 
 }

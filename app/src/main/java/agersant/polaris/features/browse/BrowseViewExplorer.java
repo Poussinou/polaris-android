@@ -21,7 +21,6 @@ import agersant.polaris.api.API;
 
 public class BrowseViewExplorer extends BrowseViewContent {
 
-	private final BrowseAdapter adapter;
 	private final SwipyRefreshLayout swipeRefresh;
 
 	public BrowseViewExplorer(Context context) {

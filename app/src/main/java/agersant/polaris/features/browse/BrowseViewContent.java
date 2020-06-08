@@ -12,6 +12,8 @@ import agersant.polaris.CollectionItem;
 
 abstract class BrowseViewContent extends FrameLayout {
 
+	protected BrowseAdapter adapter;
+
 	public BrowseViewContent(Context context) {
 		super(context);
 	}
@@ -21,5 +23,9 @@ abstract class BrowseViewContent extends FrameLayout {
 
 	void setOnRefreshListener(SwipyRefreshLayout.OnRefreshListener listener) {
 
+	}
+
+	public BrowseAdapter getAdapter() {
+		return adapter;
 	}
 }

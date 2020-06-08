@@ -10,6 +10,9 @@
 	<string name="browse_error">An error occurred while listing content</string>
 	<string name="browse_error_retry">Retry</string>
 	<string name="browse_disc_number">Disc %1$d</string>
+	<string name="browse_context_menu_queue_next">Queue Next</string>
+	<string name="browse_context_menu_queue_last">Queue Last</string>
+	<string name="browse_context_menu_play_now">Play Now</string>
 
 	<string name="queue">Queue</string>
 	<string name="queue_empty">Make a playlist by swiping music from your collection to here.</string>

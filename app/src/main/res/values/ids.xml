@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="context_action_queue_next" type="id" />
+    <item name="context_action_queue_last" type="id" />
+    <item name="context_action_play_now" type="id" />
+</resources>

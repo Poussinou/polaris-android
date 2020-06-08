@@ -7,6 +7,10 @@ import android.os.Handler;
 import android.os.Looper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.ItemTouchHelper;
+
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -20,7 +24,7 @@ import agersant.polaris.api.API;
 import agersant.polaris.api.ItemsCallback;
 
 
-abstract class BrowseItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+abstract class BrowseItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnCreateContextMenuListener {
 
 	private final BrowseAdapter adapter;
 	private CollectionItem item;
@@ -38,6 +42,7 @@ abstract class BrowseItemHolder extends RecyclerView.ViewHolder implements View.
 		queueStatusView = itemQueueStatusView;
 		queueStatusText = queueStatusView.findViewById(R.id.status_text);
 		queueStatusIcon = queueStatusView.findViewById(R.id.status_icon);
+		itemView.setOnCreateContextMenuListener(this);
 	}
 
 	void bindItem(CollectionItem item) {
@@ -55,6 +60,14 @@ abstract class BrowseItemHolder extends RecyclerView.ViewHolder implements View.
 			intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 			context.startActivity(intent);
 		}
+	}
+
+	@Override
+	public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
+		adapter.setContextMenuActiveItem(this);
+		contextMenu.add(Menu.NONE, R.id.context_action_queue_next, 0, R.string.browse_context_menu_queue_next);
+		contextMenu.add(Menu.NONE, R.id.context_action_queue_last, 0, R.string.browse_context_menu_queue_last);
+		contextMenu.add(Menu.NONE, R.id.context_action_play_now, 0, R.string.browse_context_menu_play_now);
 	}
 
 	@SuppressWarnings("UnusedParameters")

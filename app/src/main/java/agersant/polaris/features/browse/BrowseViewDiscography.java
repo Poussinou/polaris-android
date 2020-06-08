@@ -18,7 +18,6 @@ import agersant.polaris.api.API;
 
 class BrowseViewDiscography extends BrowseViewContent {
 
-	private final BrowseAdapter adapter;
 	private final SwipyRefreshLayout swipeRefresh;
 
 	public BrowseViewDiscography(Context context) {

@@ -3,6 +3,7 @@ package agersant.polaris.features.browse;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
@@ -29,6 +30,7 @@ public class BrowseActivity extends PolarisActivity {
 	private ProgressBar progressBar;
 	private View errorMessage;
 	private ViewGroup contentHolder;
+	private BrowseViewContent browseContentView;
 	private ItemsCallback fetchCallback;
 	private NavigationMode navigationMode;
 	private SwipyRefreshLayout.OnRefreshListener onRefresh;
@@ -184,23 +186,42 @@ public class BrowseActivity extends PolarisActivity {
 			return;
 		}
 
-		BrowseViewContent contentView = null;
 		switch (getDisplayModeForItems(items)) {
 			case EXPLORER:
-				contentView = new BrowseViewExplorer(this, api, playbackQueue);
+				browseContentView = new BrowseViewExplorer(this, api, playbackQueue);
 				break;
 			case ALBUM:
-				contentView = new BrowseViewAlbum(this, api, playbackQueue);
+				browseContentView = new BrowseViewAlbum(this, api, playbackQueue);
 				break;
 			case DISCOGRAPHY:
-				contentView = new BrowseViewDiscography(this, api, playbackQueue);
+				browseContentView = new BrowseViewDiscography(this, api, playbackQueue);
 				break;
 		}
 
-		contentView.setItems(items);
-		contentView.setOnRefreshListener(onRefresh);
+		browseContentView.setItems(items);
+		browseContentView.setOnRefreshListener(onRefresh);
 
 		contentHolder.removeAllViews();
-		contentHolder.addView(contentView);
+		contentHolder.addView(browseContentView);
+	}
+
+	@Override
+	public boolean onContextItemSelected(MenuItem menuItem) {
+		BrowseItemHolder itemHolder = browseContentView.getAdapter().getContextMenuActiveItem();
+		if (itemHolder != null)
+		{
+			switch (menuItem.getItemId()) {
+				case R.id.context_action_queue_next:
+					// TODO
+					break;
+				case R.id.context_action_queue_last:
+					// TODO
+					break;
+				case R.id.context_action_play_now:
+					// TODO
+					break;
+			}
+		}
+		return super.onContextItemSelected(menuItem);
 	}
 }
